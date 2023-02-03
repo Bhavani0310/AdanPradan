@@ -1,0 +1,94 @@
+
+    body {
+
+
+        font-family: "Trirong", serif;
+      }
+  
+      #read {
+        background-color: rgb(223, 224, 187);
+  
+      }
+  
+      #college {
+        color: rgb(24, 133, 235);
+      }
+  
+      .enrolled {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+  
+      }
+  
+      .login {
+        padding-top: 10px;
+        margin-bottom: 90px;
+        margin-top: 90px;
+      }
+  
+     
+      #gallery {
+        width: 1000px;
+        display: flexbox;
+  
+      }
+#feature{
+    display: flex;
+      margin-left: 15px;
+      padding-left: 20px;
+      justify-content: space-between;
+      
+  }
+  #labs{
+    
+    position: relative;
+    padding-right: 20px;
+    padding-bottom: 50px;
+  }
+  
+  #button{
+    float: right;
+  }
+  
+  .center{
+    text-align: center;
+  }
+  
+  
+  #us{
+    padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  background: #3b6acf;
+    color: white;
+  border-radius: 8px; 
+  font-size: 50px;	  
+  } 
+  #footer{
+    justify-content: end;
+    display:flex;
+  }
+  #past{
+    font-size: 1.8rem;
+  
+  }
+  #past-container{
+    border-left: 2px solid
+    black;
+    border-right: 2px solid
+    black;
+    margin: 20px;
+  }
+  /* Desktop*/
+  @media only screen and (min-width: 158px) {
+     .hide{ display: block; }
+   
+  } 
+  .register {
+    width: 200px;
+
+  }
+
+  
