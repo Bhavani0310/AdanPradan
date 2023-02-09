@@ -9,7 +9,7 @@ export default function Footer() {
             
             <div className="container-fluid bg-dark " id="linkus">
               <div className="row">
-                <div className="col-md-12 bar">
+                <div className="col-md-12 contact">
                   <h1 className="display-5" id="font">ADAN PRADAN</h1>
                    <p>Our mission is to empower young Students to be the inventors and creators.</p>
                   <div className="container">

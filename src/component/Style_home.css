@@ -1,94 +1,173 @@
+body {
 
-    body {
+
+  font-family: "Trirong", serif;
+}
 
 
-        font-family: "Trirong", serif;
-      }
+
+#college {
+  color: rgb(24, 133, 235);
+}
+
+.enrolled {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+.login {
+  padding-top: 10px;
+  margin-bottom: 90px;
+  margin-top: 90px;
+}
+
+
+#gallery {
+  width: 1000px;
+  display: flexbox;
+
+}
+a{
+  color: rgb(8, 8, 8);
+  text-decoration: none;
+}
+.faq{
+  text-decoration: none;
+}
+.faq:hover{
+   color: rgb(73, 236, 226);
+   cursor:pointer;
+   text-decoration: none;
+}
+#feature {
+  display: flex;
+  margin-left: 15px;
+  padding-left: 20px;
+  justify-content: space-between;
+
+}
+
+#labs {
+
+  position: relative;
+  padding-right: 20px;
+  padding-bottom: 50px;
+}
+
+#button {
+  float: right;
   
-      #read {
-        background-color: rgb(223, 224, 187);
-  
-      }
-  
-      #college {
-        color: rgb(24, 133, 235);
-      }
-  
-      .enrolled {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-  
-      }
-  
-      .login {
-        padding-top: 10px;
-        margin-bottom: 90px;
-        margin-top: 90px;
-      }
-  
-     
-      #gallery {
-        width: 1000px;
-        display: flexbox;
-  
-      }
-#feature{
-    display: flex;
-      margin-left: 15px;
-      padding-left: 20px;
-      justify-content: space-between;
-      
-  }
-  #labs{
-    
-    position: relative;
-    padding-right: 20px;
-    padding-bottom: 50px;
-  }
-  
-  #button{
-    float: right;
-  }
-  
-  .center{
-    text-align: center;
-  }
-  
-  
-  #us{
-    padding: 20px;
+}
+
+
+
+
+#us {
+  padding: 20px;
   text-align: center;
   text-decoration: none;
   margin: 5px 2px;
   background: #3b6acf;
-    color: white;
-  border-radius: 8px; 
-  font-size: 50px;	  
-  } 
-  #footer{
-    justify-content: end;
-    display:flex;
-  }
-  #past{
-    font-size: 1.8rem;
-  
-  }
-  #past-container{
-    border-left: 2px solid
-    black;
-    border-right: 2px solid
-    black;
-    margin: 20px;
-  }
-  /* Desktop*/
-  @media only screen and (min-width: 158px) {
-     .hide{ display: block; }
-   
-  } 
-  .register {
-    width: 200px;
+  color: white;
+  border-radius: 8px;
+  font-size: 50px;
+}
 
+#footer {
+  justify-content: end;
+  display: flex;
+}
+
+#past {
+  font-size: 1.8rem;
+
+}
+#linkfq{
+  margin-top: 1.3cm;
+margin-bottom: 1.3cm;
+
+}
+#past-container {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  margin: 20px;
+}
+.loginform{
+  width: 520px;
+  background-color: rgb(226, 223, 218);
+}
+
+
+.register {
+  width: 200px;
+ 
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ text-align: center;
+}
+
+.box {
+  width: 50%;
+  margin: auto;
+}
+.carddivision{
+  display: flex;
+  flex-direction: row;
+}
+
+.division {
+  display: flex;
+  flex-direction: row;
+}
+.part1{
+  height: 610px;
+  width: 699px;
+  
+}
+.part2{
+  flex: 1;
+  margin-left: 47px;
+}
+label {
+  display: grid;
+  justify-items: start;
+}
+
+/* Desktop*/
+@media only screen and (max-width: 620px) {
+  .hide {
+    display: block;
   }
 
-  
+  .division {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .carddivision {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar a{
+    padding: 0%;
+  }
+  .loginform{
+    width: 300px;
+    
+  }
+  .space{
+    margin-top: 1.8cm;
+  }
+  .part1{
+    width: 300px;
+  height: auto;
+  }
+  .part2{
+    margin-left: 0px;
+  }
+}

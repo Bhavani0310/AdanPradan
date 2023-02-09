@@ -1,103 +1,108 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.code {
+  font-family: Tahoma, sans-serif;
 }
-.space{
-  margin-top:2.8cm;
+
+.space {
+  margin-top: 2.8cm;
 }
 
 /*start of navigation*/
-.navbar{
-   background-color: rgb(13, 13, 13);    
+.navbar {
+  background-color: rgb(18, 17, 17);
 }
-#font{
+
+#font {
   color: rgb(213, 213, 152);
-   font-family: "Audiowide", sans-serif;
+  font-family: "Audiowide", sans-serif;
 }
-.bar{
-  color: rgb(240, 240, 217); 
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+
+
 .navbar-toggler[aria-expanded="true"] {
   background-color: red;
 }
-.navbar-toggler[aria-expanded="false"] {
-  background-color: hwb(257 94% 3%);
+.contact{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-.navbar ul li{
+
+
+.navbar ul li {
   margin: 1px 10px;
 }
-.navbar a {
-  display: block;
-  padding: 20px;
+
+.bar {
+ color: rgb(236, 244, 244);
+  padding: 10px;
   text-align: center;
- 
-}
-.navbar ul li a:hover{
- color: rgb(29, 230, 56);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-
+.bar:hover {
+  color: #d9d56a;
+  
+  text-decoration: none;
+}
 
 /*end of navigation*/
-.h1-primary{
+.h1-primary {
   height: 150px;
+ 
   font-size: 2.8rem;
   padding-top: 100px;
- padding-left: 20px;
- font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding-left: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-hr{
-  
-  border-width:3px;
 
+hr {
+  border-width: 3px;
 }
-.card{
-  box-shadow: 10px 10px 5px rgb(44, 46, 46) ;
+
+.cardlist {
+  box-shadow: 10px 10px 5px rgb(44, 46, 46);
   transition: all 0.3s;
-  display: none;
-}  
-.card:hover{
-transform:scale(1.05);
+ 
 }
+
+.card:hover {
+  box-shadow: 0 0 10px #ccc;
+  transform: translateY(-5px);
+  
+}
+
 .accordion {
-      
-
-cursor:pointer;
-padding: 18px;
-margin: 10px 5px;
-width: auto;
-border: none;
-text-align: left;
-outline: none;
-align-items: center;
-transition: 0.4s;
-font-size: 30px;
-background-color: #f2f6fc;
-
+  cursor: pointer;
+  width: auto;
+  border: none;
+  text-align: left;
+  outline: none;
+  align-items: center;
+  transition: 0.4s;
+  font-size: 30px;
+  background-color: #f2f6fc;
 }
-.h{
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-font-size: 2.8rem;
+.h {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2.8rem;
 }
 
 .accordion:hover#labs {
- transform: scale(1.03);
-color: rgb(162, 255, 0);
-text-transform:uppercase
+  transform: scale(1.03);
+  color: rgb(162, 255, 0);
+  text-transform: uppercase;
 }
-.accordion:hover#faq {
-transform: scale(1.03);
-color: rgb(162, 255, 0);
 
-} 
+.accordion:hover#faq {
+  color: rgb(162, 255, 0);
+}
