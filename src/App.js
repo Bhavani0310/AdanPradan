@@ -10,12 +10,12 @@ import Register from './component/Register';
 import FAQ from './component/Faq';
 import ContactForm from './component/Contact';
 import Student_user from './component/Student_user';
-import PeakList from './component/samplemongo';
+
 
 function App() {
   return (
      <>
-      {/* <Router>
+      <Router>
 
           <Routes>
           <Route path="/" element={<Home />} />
@@ -26,8 +26,8 @@ function App() {
         <Route path="Student" element={<Student_user/>} />
           </Routes>
       
-        </Router> */}
-        <PeakList/>
+        </Router>
+        
             
      </>
   );
