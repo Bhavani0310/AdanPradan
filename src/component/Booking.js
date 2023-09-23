@@ -39,7 +39,7 @@ function BookingPage() {
   // }, []);
   
   React.useEffect(() => {
-    axios.get("http://localhost:4000/Adan/colleges/list")
+    axios.get("https://backend-rho-one.vercel.app/Adan/colleges/list")
       .then((response) => {
         console.log(response.data.data);
         setColleges(response.data.data);

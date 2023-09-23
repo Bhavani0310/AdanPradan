@@ -6,7 +6,7 @@ function CollegeStd() {
   const [data, setData] = useState([]);
   const [workshops, setWorkshops] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:4000/Adan/colleges/list").then((response) => {
+    axios.get("https://backend-rho-one.vercel.app/Adan/colleges/list").then((response) => {
       setData(response.data.data);
       setWorkshops(response.data.data.workshop);
       console.log(response.data.data);

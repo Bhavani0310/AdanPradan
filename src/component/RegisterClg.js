@@ -40,7 +40,7 @@ const CollegeRegistration = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/Adan/registerclg",
+        "https://backend-rho-one.vercel.app/Adan/registerclg",
         {
           ...formData,
           workshop: formData.workshops.filter((workshop) => workshop !== ""),
