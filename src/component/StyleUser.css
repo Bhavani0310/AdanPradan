@@ -1,0 +1,158 @@
+.navbar ul li{
+    margin-left: 15px;
+    margin-right: 15px;
+    
+  }
+ 
+*{
+    margin: 0;
+    padding: 0;
+  }
+  #us{
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        background: #3B5998;
+        color: white;
+        border-radius: 8px; 
+       font-size: 50px;	  
+     }
+  .navbar{
+    background-color: rgb(7, 7, 7);
+      
+  }
+  .bar{
+    color: beige; 
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  #font{
+    color: rgb(213, 213, 152);
+     font-family: "Audiowide", sans-serif;
+     
+  }
+  .footer{
+    background-color: rgb(0,0,0);
+  }
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    border-radius: 15px;
+  
+  }
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  #myTable {
+    border-collapse: collapse;
+    width: 300px;
+    border: 1px solid black;  
+    font-size: 18px;
+    background-color: rgb(237, 239, 232);
+    border-radius: 40px;
+  
+  }
+  
+  #myTable th, #myTable td {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid black;
+  }
+  
+  #myTable tr {
+    border-bottom: 0.5px solid rgb(235, 226, 226);
+    
+  
+  }
+  /* .accordion {
+          
+          color: rgb(245, 238, 238);
+          cursor:pointer;
+          padding: 18px;
+          margin: 10px 0;
+          width: auto;
+          border: none;
+          text-align: left;
+          outline: none;
+          
+          transition: 0.4s;
+          font-size: 30px;
+      }
+      
+      
+      .accordion:hover {
+          background-color: rgb(228, 222, 222);
+          border: 1px solid rgb(26, 27, 28);
+          color: blue;
+      } */
+      
+      
+  .floating {
+      float: left;
+      width: 200px;;
+      height: 150px;
+      margin-right: 20px;
+  }
+  
+  .About-us {
+        width: 100%;
+        text-align: center;
+       
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    .d{
+    padding-top: 100px;
+    }
+    .link{
+    padding-top: 100px;
+    }
+    .navbar-toggler[aria-expanded="true"] {
+    background-color: red;
+  }
+  .navbar-toggler[aria-expanded="false"] {
+    background-color: hwb(69 7% 5%);
+  }
+    
+    #us{
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        background: #3B5998;
+        color: white;
+        border-radius: 8px; 
+       font-size: 50px;	  
+     } 
+     .enrolled{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      
+  }
+  .card{
+    box-shadow:0px 0px 30px 0.01px #aeafb1,0px 0px 1px 
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+  }

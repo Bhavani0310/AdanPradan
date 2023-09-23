@@ -1,103 +1,86 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
-import './Style_home.css'
-const Login = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-        password2: "",
-    });
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from './Authcontext';
+import './Style_home.css';
 
-    const [errors, setErrors] = useState({});
+export default function Login() {   
+  const [email, setEmail] = useState('bhavani123@gmail.com');
+  const [password, setPassword] = useState('123456');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
+  const handleSubmit = async (e) => {
+    
+    e.preventDefault();
+    try {
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const newErrors = {};
+      // Retrieve the token from local storage
+      const token = localStorage.getItem('token');
 
-        if (!formData.name) {
-            newErrors.name = "Please enter your name.";
+      const response = await axios.post(
+        'http://localhost:4000/Adan/login',
+        {
+          email: email,
+          password: password,
+        },
+        {
+          // Include the token in the "Authorization" header
+          headers: {
+            'Authorization': `Bearer ${token}`, // Add "Bearer " prefix
+          },
         }
+      );
 
-        if (!formData.email) {
-            newErrors.email = "Please enter a valid email address.";
-        }
-
-        if (!formData.password) {
-            newErrors.password = "Please enter a password.";
-        }
-
-        if (formData.password !== formData.password2) {
-            newErrors.password2 = "Passwords do not match.";
-        }
-
-        setErrors(newErrors);
-
-        if (!Object.keys(newErrors).length) {
-            // Submit form data
-        }
-    };
-
-    return (
-        <>
-        <Navbar/>
-            <div className="container loginform ">
-                <div className="space center">
-                    <form onSubmit={handleSubmit} style={{width:"1000px"}}>
-                        <h2>Login</h2>
-                       
-                        <div className="form-group">
-                            <label htmlFor="email">Email address</label>
-                            <input
-                                type="email"
-                                className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.email}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                className={`form-control ${errors.password ? "is-invalid" : ""}`}
-                                id="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.password}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password2">Confirm Password</label>
-                            <input
-                                type="password"
-                                className={`form-control ${errors.password2 ? "is-invalid" : ""}`}
-                                id="password2"
-                                name="password2"
-                                value={formData.password2}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.password2}</div>
-                        </div>
-                        <button type="submit" className="btn btn-primary">
-                            Submit
-                        </button>
-                    </form>
-                    </div>
-            </div>
-        </>
-    );
-};
+      // Assuming the JWT token is included in the response as response.data.token
+      const newToken = response.data.token;
+      const expirationTime = new Date().getTime() + 60 * 1000;
+      // Update the token in local storage
+      await login(newToken);
+      localStorage.setItem('token', newToken);
+      localStorage.setItem('tokenExpiration', expirationTime);
+      
+      console.log('login Response:', response.data);
+      navigate('/Student');
+    } catch (error) {
+      setError('Failed to log in');
+      console.log(error.message);
+    }
+  };
 
 
-export default Login;
+  return (
+    <>
+<div className="container space py-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          
+    <div className="card ">
+      <div className="card-header">
+        <h2 className="card-title">Login</h2>
+      </div>
+      <div className="card-body">
+        <form onSubmit={handleSubmit}>
+          
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input type="password" id="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">Log in</button>
+          </div>
+          {error && <div className="alert alert-danger">{error}</div>}
+        </form>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </>
+  );
+}

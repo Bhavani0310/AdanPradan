@@ -1,116 +1,89 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
-import './Style_home.css';
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react';
+import axios from 'axios'; 
 
-const Register = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-        password2: "",
-    });
+import { useNavigate } from 'react-router-dom';
 
-    const [errors, setErrors] = useState({});
+const StudentRegistration = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    name: '',
+    studentId: '',
+  });
 
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const newErrors = {};
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-        if (!formData.name) {
-            newErrors.name = "Please enter your name.";
-        }
+  const handleRegistration = async (e) => {
+    e.preventDefault(); 
+    
+    try {
+      const response = await axios.post('http://localhost:4000/Adan/register', formData); 
+      console.log('Registration Response:', response.data);
+      navigate('/student'); 
+    } catch (error) {
+      console.error('Registration Error:', error);
+      setError('Registration failed. Please try again.'); 
+    }
+  };
 
-        if (!formData.email) {
-            newErrors.email = "Please enter a valid email address.";
-        }
-
-        if (!formData.password) {
-            newErrors.password = "Please enter a password.";
-        }
-
-        if (formData.password !== formData.password2) {
-            newErrors.password2 = "Passwords do not match.";
-        }
-
-        setErrors(newErrors);
-
-        if (!Object.keys(newErrors).length) {
-            // Submit form data
-        }
-    };
-
-    return (
-        <>
-        <Navbar/>
-            <div className="container loginform ">
-                <div className="space center">
-                    <form onSubmit={handleSubmit} style={{width:"1000px"}}>
-                        <h2>Login</h2>
-                        <div className="form-group">
-                            <label htmlFor="name">Enter your Full Name</label>
-                            <input
-                                type="text"
-                                className={`form-control ${errors.name ? "is-invalid" : ""}`}
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.name}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email address</label>
-                            <input
-                                type="email"
-                                className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.email}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                className={`form-control ${errors.password ? "is-invalid" : ""}`}
-                                id="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.password}</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password2">Confirm Password</label>
-                            <input
-                                type="password"
-                                className={`form-control ${errors.password2 ? "is-invalid" : ""}`}
-                                id="password2"
-                                name="password2"
-                                value={formData.password2}
-                                onChange={handleChange}
-                            />
-                            <div className="invalid-feedback">{errors.password2}</div>
-                        </div>
-                        <Link to="/Student"><button type="submit" className="btn btn-primary">
-                            Submit
-                        </button></Link>
-                    </form>
-                    </div>
+  return (
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-header">
+              <h2 className="card-title">Student Registration</h2>
             </div>
-        </>
-    );
+            <div className="card-body">
+              <form onSubmit={handleRegistration}>
+              <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleInputChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleInputChange}
+        />
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleInputChange}
+        />
+        <input
+          type="text"
+          name="collegeName"
+          placeholder="collegeName"
+          value={formData.collegeName}
+          onChange={handleInputChange}
+        />
+        <button type="submit">Register</button>
+              </form>
+              {error && (
+                <div className="alert alert-danger" role="alert">
+                  {error}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  );
 };
 
-
-export default Register;
+export default StudentRegistration;

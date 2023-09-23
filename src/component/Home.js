@@ -3,14 +3,11 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
-
 import "./Style_home.css";
 
 export default function Home() {
   return (
     <>
-     <Navbar contact="Contact-us" />
       <div className="container-lg space division">
         <div className="part1 ">
           <h1 className="display-3">Gallery</h1>
@@ -85,13 +82,25 @@ export default function Home() {
             </center>
             <center>
               {" "}
-              <Link to="/Login">
+              <Link to="/LoginStd">
                 <button
                   type="button"
                   className="btn btn-primary btn-lg register"
                   href="#"
                 >
-                  Login
+                  Login as Student
+                </button>
+              </Link>
+            </center>
+            <center>
+              {" "}
+              <Link to="/LoginClg">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-lg register"
+                  href="#"
+                >
+                  Login as College
                 </button>
               </Link>
             </center>

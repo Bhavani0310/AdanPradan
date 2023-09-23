@@ -1,50 +1,65 @@
-import {React,useState} from "react";
-
-import "./Style_home.css";
-
-function FAQ(props) {
-    
+import React from "react";
+import { Link } from "react-router-dom";
+export default function Faq() {
   return (
     <>
-    <h1 className=" h1-primary space center">FAQ</h1>
-      <div className="carddivision  center">
-          
-      <div className="card  mb-3 space" style={{ maxWidth: "20rem" ,marginRight:"2cm"}}>
-        <div className="card-header">Header{props.title}</div>
-        <div className="card-body text-primary">
-          <h5 className="card-title"> 
-        </h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.{props.description}
-          </p>
-         
-
-          
-   
+      <Link to="/faq"></Link>
+      <div className="container space" id="C">
+        <div className="display-2" style={{ color: "rgb(105, 58, 19)" }}>
+          <b>FAQ's</b>
         </div>
+        <ul>
+          <li>
+            <p >
+              <h2>How can I book a slot?</h2>
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
+              tempore eum porro consectetur expedita neque minima, magn am culpa
+              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit. Hic obcaecati ipsam ex quibusdam animi assumenda
+              minus laboriosam ipsa tempore eum porro consectetur expedita neque
+             .{" "}
+            </p>
+          </li>
+          <li>
+            <p >
+              <h2>How can I book based on location?</h2>
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
+              tempore eum porro consectetur expedita neque minima, magn am culpa
+              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit. Hic obcaecati ipsam ex quibusdam animi assumenda
+              minus laboriosam ipsa tempore eum porro consectetur expedita neque
+              minima, magn am culpa architecto libero quas.Lorem ipsum dolor sit
+             .
+            </p>
+          </li>
+          <li>
+            <p >
+              <h2>Who will receive me in college? </h2>
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
+              tempore eum porro consectetur expedita neque minima, magn am culpa
+              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit. Hic obcaecati ipsam ex quibusdam animi assumenda
+              minus laboriosam ipsa tempore eum porro consectetur expedita neque
+              minima, magn am culpa architecto libero quas.Lorem ipsum dolor sit
+              amet, consectetur adipisicing elit. Hic obcaecati ipsam ex
+              quibusdam animi assumenda minus laboriosam ipsa tempore eum porro
+              consectetur expedita neque minima, magn am culpa architecto libero
+              quas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
+              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
+              tempore eum porro consectetur expedita neque minima, magn am culpa
+              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit.
+            </p>
+          </li>
+        </ul>
       </div>
-      <div className="card  mb-3 space" style={{ maxWidth: "18rem", marginRight:"2cm"}}>
-        <div className="card-header">Header</div>
-        <div className="card-body text-primary">
-          <h5 className="card-title">Primary card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div> <div className="card  mb-3 space" style={{ maxWidth: "18rem" ,marginRight:"2cm" }}>
-        <div className="card-header">Header</div>
-        <div className="card-body text-primary">
-          <h5 className="card-title">Primary card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
-      </div>
+      <script>window.onload = function () {window.scrollTo(0, 0)};</script>
     </>
   );
 }
-export default FAQ;

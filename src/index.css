@@ -71,13 +71,11 @@ hr {
 .cardlist {
   box-shadow: 10px 10px 5px rgb(44, 46, 46);
   transition: all 0.3s;
- 
 }
 
 .card:hover {
   box-shadow: 0 0 10px #ccc;
   transform: translateY(-5px);
-  
 }
 
 .accordion {
@@ -98,7 +96,7 @@ hr {
 }
 
 .accordion:hover#labs {
-  transform: scale(1.03);
+  transform: scale(1.01);
   color: rgb(162, 255, 0);
   text-transform: uppercase;
 }
