@@ -68,7 +68,7 @@ export default function NavbarUser() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/colleges">
+                <Link className="nav-link" to="/college">
                   <h3 className="bar">Colleges</h3>
                 </Link>
               </li>

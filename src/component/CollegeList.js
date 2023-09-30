@@ -14,7 +14,7 @@ function CollegeList() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/Adan/workshops"
+          "https://backend-rho-one.vercel.app/Adan/workshops"
         ); // Replace with your server's endpoint
         const groupedWorkshops = groupWorkshopsByCollege(response.data);
         setCollegesWithWorkshops(groupedWorkshops);
