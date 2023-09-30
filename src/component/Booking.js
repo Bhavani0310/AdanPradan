@@ -1,53 +1,68 @@
-import React from "react";
-import "./Booking.css";
-import axios from "axios";
+import React, { useState } from 'react';
+import './Booking.css';
+import axios from 'axios';
+import { useAuth } from './Authcontext';
+import mongoose from 'mongoose';
+import { useLocation } from 'react-router-dom';
 
 function BookingPage() {
-  const [colleges, setColleges] = React.useState([]);
+  const [colleges, setColleges] = useState([]);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [bookingError, setBookingError] = useState('');
+  const { user } = useAuth();
+
+  const location = useLocation(); // Use useLocation to access query parameters
+  const searchParams = new URLSearchParams(location.search);
+  const collegeName = searchParams.get('collegeName');
+  const workshopTitle = searchParams.get('workshopTitle');
+
+  const handleDateChange = (event) => {
+    const selectedDate = new Date(event.target.value);
+    setSelectedDate(selectedDate);
+
+    // Calculate the date that is one month in the future
+    const oneMonthAheadDate = new Date();
+    oneMonthAheadDate.setMonth(oneMonthAheadDate.getMonth() + 1);
+
+    // Compare the selected date with one month ahead
+    if (selectedDate > oneMonthAheadDate) {
+      setBookingError('Please select a date that is at least one month in the future.');
+    } else if (selectedDate < new Date()) {
+      setBookingError('Please select a future date, not a past date.');
+    } else {
+      setBookingError('');
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const BookingClg = event.target.elements.CollegeName.value;
-    const Date = event.target.elements.Date.value;
-    const slotTime = event.target.elements.Time.value;
-    
-    axios.post("http://localhost:4000/Adan/clg", {
-    BookingClg,
-      Date,
-      slotTime
-    })
-    .then((response) => {
-      console.log(response);
-      alert("Form data saved successfully");
-    })
-    .catch((error) => {
-      console.error(error);
-      alert("Error saving form data");
-    });
-  };
+    if (bookingError) {
+      // If there's a booking error, do not proceed with the submission
+      return;
+    }
 
-  // React.useEffect(() => {
-  //   axios.get("http://localhost:4000/Adan/colleges/list").then((response) => {
-  //     setColleges(response.data);
-  //   });
-  // }, []);
-  // React.useEffect(() => {
-  //   axios.get("http://localhost:4000/Adan/colleges/list").then((response) => {
-  //     console.log(response.data); // Check the data being received
-  //     setColleges(response.data);
-  //   });
-  // }, []);
-  
-  React.useEffect(() => {
-    axios.get("https://backend-rho-one.vercel.app/Adan/colleges/list")
+    const BookingClg = event.target.elements.CollegeName.value;
+    const Date = selectedDate.toISOString().split('T')[0];
+    const slotTime = event.target.elements.Time.value;
+    const user = mongoose.Types.ObjectId.createFromHexString(localStorage.getItem("Id"));
+
+    axios
+      .post('http://localhost:4000/Adan/booking', {
+        collegeName: BookingClg,
+        workshopTitle,
+        Date,
+        slotTime,
+        user,
+      })
       .then((response) => {
-        console.log(response.data.data);
-        setColleges(response.data.data);
+        console.log(response);
+        alert('Form data saved successfully');
       })
       .catch((error) => {
-        console.error("Error fetching data:", error.message);
+        console.error(error);
+        alert('Error saving form data');
       });
-  }, []);
+  };
 
   return (
     <div className="space">
@@ -59,16 +74,19 @@ function BookingPage() {
           <div className="form-row">
             <label htmlFor="selectcollege">College:</label>
             <select name="CollegeName" id="selectcollege" required>
-              {colleges.map((college) => (
-                <option key={college.collegeName} value={college.collegeName}>
-                  {college.collegeName}
-                </option>
-              ))}
+              <option value={collegeName}>{collegeName}</option>
+            </select>
+          </div>
+          <div className="form-row">
+            <label htmlFor="selectworkshop">Workshop:</label>
+            <select name="Workshop" id="selectworkshop" required>
+              <option value={workshopTitle}>{workshopTitle}</option>
             </select>
           </div>
           <div className="form-row">
             <label htmlFor="Date">Date: </label>
-            <input type="date" name="Date" id="Date" required />
+            <input type="date" name="Date" id="Date" required onChange={handleDateChange} />
+            {bookingError && <p className="error" style={{"color":"red"}}>{bookingError}</p>}
           </div>
           <div className="form-row">
             <label htmlFor="slot-timings">Slot timings:</label>

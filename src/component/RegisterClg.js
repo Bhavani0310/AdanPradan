@@ -10,21 +10,39 @@ const CollegeRegistration = () => {
     JntuCode: "",
     Address: "",
     website: "",
-    workshops: [""], // Initialize with one empty workshop field
+    workshops: [
+      {
+        workshopTitle: "",
+        workshopDescription: "",
+        workshopSeats: "",
+        workshopTiming: "",
+      },
+    ],
   });
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e, index, field) => {
+    const { value } = e.target;
     const workshopsCopy = [...formData.workshops];
-    workshopsCopy[index] = value;
+    workshopsCopy[index][field] = value;
     setFormData({ ...formData, workshops: workshopsCopy });
   };
 
   const handleAddWorkshop = () => {
-    setFormData({ ...formData, workshops: [...formData.workshops, ""] });
+    setFormData({
+      ...formData,
+      workshops: [
+        ...formData.workshops,
+        {
+          workshopTitle: "",
+          workshopDescription: "",
+          workshopSeats: "",
+          workshopTiming: null,
+        },
+      ],
+    });
   };
 
   const handleRemoveWorkshop = (index) => {
@@ -36,19 +54,20 @@ const CollegeRegistration = () => {
   const handleRegistration = async (e) => {
     e.preventDefault();
 
-    const workshopData = JSON.stringify(formData.workshops);
-
     try {
       const response = await axios.post(
         "https://backend-rho-one.vercel.app/Adan/registerclg",
         {
           ...formData,
-          workshop: formData.workshops.filter((workshop) => workshop !== ""),
+          workshops: formData.workshops.filter((workshop) => workshop.workshopTitle !== ""),
         }
       );
-      console.log("Registration Response:", formData);
 
-      navigate("/student");
+      if (response.status === 200) {
+        alert("Registration successful!");
+        navigate("/");
+      }
+      console.log(response.message);
     } catch (error) {
       console.error("Registration Error:", error.message);
       setError("Registration failed. Please try again.");
@@ -61,7 +80,7 @@ const CollegeRegistration = () => {
         <div className="col-md-6">
           <div className="card">
             <div className="card-header">
-              <h2 className="card-title">Student Registration</h2>
+              <h2 className="card-title">College Registration</h2>
             </div>
             <div className="card-body">
               <form onSubmit={handleRegistration}>
@@ -120,15 +139,35 @@ const CollegeRegistration = () => {
                     setFormData({ ...formData, website: e.target.value })
                   }
                 />
-
                 {formData.workshops.map((workshop, index) => (
                   <div key={index}>
                     <input
                       type="text"
-                      name={`workshop[${index}]`}
-                      placeholder={`Workshop ${index + 1}`}
-                      value={workshop}
-                      onChange={(e) => handleInputChange(e, index)}
+                      name={`workshopTitle`}
+                      placeholder={`Workshop Title ${index + 1}`}
+                      value={workshop.workshopTitle}
+                      onChange={(e) => handleInputChange(e, index, 'workshopTitle')}
+                    />
+                    <input
+                      type="text"
+                      name={`workshopDescription`}
+                      placeholder={`Workshop Description ${index + 1}`}
+                      value={workshop.workshopDescription}
+                      onChange={(e) => handleInputChange(e, index, 'workshopDescription')}
+                    />
+                    <input
+                      type="text"
+                      name={`workshopSeats`}
+                      placeholder={`Workshop Seats ${index + 1}`}
+                      value={workshop.workshopSeats}
+                      onChange={(e) => handleInputChange(e, index, 'workshopSeats')}
+                    />
+                    <input
+                      type="time"
+                      name={`workshopTiming`}
+                      placeholder={`Workshop Timing ${index + 1}`}
+                      value={workshop.workshopTiming}
+                      onChange={(e) => handleInputChange(e, index, 'workshopTiming')}
                     />
                     <button
                       type="button"
@@ -141,6 +180,7 @@ const CollegeRegistration = () => {
                 <button type="button" onClick={handleAddWorkshop}>
                   Add Workshop
                 </button>
+                
                 <button type="submit">Register</button>
               </form>
               {error && (

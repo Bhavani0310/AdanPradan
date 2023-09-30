@@ -11,28 +11,17 @@ export default function Faq() {
         <ul>
           <li>
             <p >
-              <h2>How can I book a slot?</h2>
+              <h2> How does AdanPradhan work?</h2>
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
-              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
-              tempore eum porro consectetur expedita neque minima, magn am culpa
-              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Hic obcaecati ipsam ex quibusdam animi assumenda
-              minus laboriosam ipsa tempore eum porro consectetur expedita neque
+              AdanPradhan is a workshop booking platform that connects students with affordable workshops. You can browse and select workshops based on your interests and location. Colleges and institutions can also list their workshops on our platform.
              .{" "}
             </p>
           </li>
           <li>
             <p >
-              <h2>How can I book based on location?</h2>
+              <h2>How do I book a workshop?</h2>
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
-              obcaecati ipsam ex quibusdam animi assumenda minus laboriosam ipsa
-              tempore eum porro consectetur expedita neque minima, magn am culpa
-              architecto libero quas.Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Hic obcaecati ipsam ex quibusdam animi assumenda
-              minus laboriosam ipsa tempore eum porro consectetur expedita neque
-              minima, magn am culpa architecto libero quas.Lorem ipsum dolor sit
+              To book a workshop, simply create an account on AdanPradhan, browse available workshops, select the one you're interested in, and follow the booking instructions provided.
              .
             </p>
           </li>

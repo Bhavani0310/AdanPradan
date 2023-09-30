@@ -20,7 +20,7 @@ export default function Home() {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
-                  src="images/sample_1.jpg"
+                  src="images/sample_2.jpg"
                   className="d-block w-100"
                   alt="photo_1"
                 />
@@ -79,10 +79,20 @@ export default function Home() {
                   Register{" "}
                 </button>{" "}
               </Link>
+              
             </center>
+            <Link to="/RegisterClg">
+                <button
+                  type="button"
+                  className="btn btn-danger btn-lg register"
+                  href="#"
+                >
+                  Register as College{" "}
+                </button>{" "}
+              </Link>
             <center>
               {" "}
-              <Link to="/LoginStd">
+              <Link to="/LoginClg">
                 <button
                   type="button"
                   className="btn btn-primary btn-lg register"
@@ -94,7 +104,7 @@ export default function Home() {
             </center>
             <center>
               {" "}
-              <Link to="/LoginClg">
+              {/* <Link to="/LoginClg">
                 <button
                   type="button"
                   className="btn btn-primary btn-lg register"
@@ -102,7 +112,7 @@ export default function Home() {
                 >
                   Login as College
                 </button>
-              </Link>
+              </Link> */}
             </center>
           </div>
         </div>
@@ -115,20 +125,7 @@ export default function Home() {
       <div className="container-lg">
          
         <h4>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum
-          adipisci amet, veritatis repellat quibusdam omnis corporis fuga,
-          dolorum ea quam totam beatae, consectetur est expedita. Praesentium
-          blanditiis consequatur omnis ex! Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Possimus aut vero labore porro sed, a
-          beatae corporis vitae magnam nostrum doloremque? Odit nobis quod aut
-          necessitatibus esse nostrum ut qui. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Fuga similique hic quisquam, dolore
-          placeat debitis obcaecati! Consectetur aut odit fugit repellendus,
-          minima, temporibus numquam alias enim corrupti, libero eos amet?
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-          tempore autem repellendus officiis temporibus, incidunt voluptatibus
-          nam libero corrupti rerum modi nulla optio maxime, impedit animi
-          tempora inventore. Vero, sint!
+        <strong>Welcome to AdanPradhan</strong>, your one-stop destination for accessible and enriching workshops. Our mission is to empower students with affordable educational opportunities that propel them toward success in their academic and personal endeavors. <strong>At AdanPradhan</strong>, we prioritize affordability, employing location-based filtering to reduce travel costs and offering a diverse range of workshops spanning technology, arts, business, sciences, and more. Additionally, educational institutions can partner with us to showcase their workshops, connecting with eager learners and contributing to their educational growth.
         </h4>
       </div>
       </div>
@@ -142,19 +139,19 @@ export default function Home() {
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingOne">
                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefaq" aria-expanded="true" aria-controls="collapsefaq">
-                      <h2>How.....</h2>
+                      <h2>How does AdanPradhan work?</h2>
                     </button>
                   </h2>
                   <div id="collapsefaq" className="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div className="accordion-body">
-                     <h5><strong>ipsum dolor sit amet, consectetur adipisicing elit</strong> . Atque rem voluptate quas vero consequatur obcaecati quos quia saepe aliquam ex dolore, doloremque dicta dolores animi! Amet eligendi id iusto odio.</h5> 
+                     <h5><strong>AdanPradhan is a workshop booking platform that connects students with affordable workshops. </strong>You can browse and select workshops based on your interests and location. Colleges and institutions can also list their workshops on our platform.</h5> 
                     </div>
                   </div>
                 </div>
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingTwo">
                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwofaq" aria-expanded="false" aria-controls="collapseTwofaq">
-                      <h2>what.....</h2>
+                      <h2>How do I book a workshop?</h2>
                     </button>
                   </h2>
                   <div id="collapseTwofaq" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">

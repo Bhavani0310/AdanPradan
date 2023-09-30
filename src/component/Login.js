@@ -35,13 +35,13 @@ export default function Login() {
 
       // Assuming the JWT token is included in the response as response.data.token
       const newToken = response.data.token;
-      const expirationTime = new Date().getTime() + 60 * 1000;
-      // Update the token in local storage
+
       await login(newToken);
       localStorage.setItem('token', newToken);
-      localStorage.setItem('tokenExpiration', expirationTime);
+      localStorage.setItem('Id',response.data.user._id);
       
-      console.log('login Response:', response.data);
+      // console.log('login Response:', response.data);
+      // console.log(JSON.stringify(response.data))
       navigate('/Student');
     } catch (error) {
       setError('Failed to log in');

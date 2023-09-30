@@ -26,9 +26,13 @@ export const AuthProvider = ({ children }) => {
     setAuthenticated(true);
     setUser(userData);
     setToken(authToken);
+    
+    console.log(JSON.stringify(userData))
 
     // Store the token and user data in local storage
     localStorage.setItem("token", authToken);
+    
+
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
@@ -37,6 +41,7 @@ export const AuthProvider = ({ children }) => {
     setAuthenticated(false);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("Id");
     setUser(null);
     setToken(null);
   };
@@ -45,8 +50,8 @@ export const AuthProvider = ({ children }) => {
   const setAuthStatus = (status) => {
     setAuthenticated(status);
   };
-
-  console.log(authenticated);
+  
+  //console.log(authenticated);
 
   return (
     <AuthContext.Provider

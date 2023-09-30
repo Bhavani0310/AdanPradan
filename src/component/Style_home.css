@@ -22,7 +22,27 @@ body {
   margin-bottom: 90px;
   margin-top: 90px;
 }
+.workshop-item {
+  display: flex; /* Use flexbox to align items horizontally */
+  justify-content: space-between; /* Space between workshop title and button */
+  align-items: center; /* Center vertically */
+  margin-bottom: 10px; /* Add some margin between workshop items */
+}
 
+/* Style for the "Book now" button */
+.workshop-item button {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove button border */
+  padding: 5px 10px; /* Add padding to the button */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Style for the workshop title */
+.workshop-item .card-subtitle {
+  margin: 0; /* Remove default margin for workshop title */
+  flex-grow: 1; /* Allow workshop title to grow and take available space */
+}
 
 #gallery {
   width: 1000px;
