@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import mongoose from "mongoose";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 import axios from "axios"; // Import Axios or your preferred HTTP client.
 const TodayBooking = (msg) => {
   const [workshopsData, setWorkshopsData] = useState([]);
@@ -76,6 +78,31 @@ const TodayBooking = (msg) => {
     };
     fetchWorkshopData();
   }, []);
+
+  const downloadStudentList = (id) => {
+    const workshop = workshopsData.find((workshop) => workshop._id === id);
+
+    const doc = new jsPDF();
+
+    doc.text(`Workshop ID: ${workshop._id}`, 10, 10);
+    doc.text('Date: ' + new Date(workshop.workshops[0].Date).toDateString(), 10, 20);
+
+    const table = [];
+    table.push(['S.No', 'Name', 'College']);
+    workshop.studentname.forEach((name, i) => {
+      table.push([i + 1, name, workshop.studentcollege[i]]);
+    });
+
+    doc.autoTable({
+      startY: 30,
+      head: [table[0]],
+      body: table.slice(1),
+      tableLineColor: [0, 0, 0],
+      tableLineWidth: 0.2,
+    });
+
+    doc.save(`student_list_${workshop._id}.pdf`);
+  };
   return (
     <>
      <div>
@@ -112,15 +139,24 @@ const TodayBooking = (msg) => {
                         ))}
                       </ol>
                     </h6>
+                     <button
+                        type="button"
+                        className="btn btn-primary  float-end"
+                        onClick={() => downloadStudentList(workshop._id)}
+                      >
+                        Download List
+                      </button>
                   </div>
                   <div className="card-footer text-center">
+                 
+                      {""}
                     <button
                       type="button"
                       className="btn btn-primary btn-theme float-end"
                       data-bs-toggle="modal"
                       data-bs-target={`#myModal-${workshop._id}`}
                     >
-                      View Details
+                      View more
                     </button>
                   </div>
                 </div>
