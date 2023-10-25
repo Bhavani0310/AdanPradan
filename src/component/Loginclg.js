@@ -7,8 +7,8 @@ import './Style_home.css';
 export default function Loginclg() {   
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
-  const emailParam = queryParams.get('email') || 'cbit@gmail.com'; // Provide a default email
-  const passwordParam = queryParams.get('password') || 'cbit@123$'; 
+  const emailParam = queryParams.get('emailclg') || 'cbit@gmail.com'; // Provide a default email
+  const passwordParam = queryParams.get('passwordclg') || 'cbit@123$'; 
   const [email, setEmail] = useState(emailParam);
   const [password, setPassword] = useState(passwordParam);
   const [error, setError] = useState('');
@@ -24,7 +24,7 @@ export default function Loginclg() {
       const token = localStorage.getItem('token');
 
       const response = await axios.post(
-        'http://localhost:4000/Adan/loginclg',
+        'https://backend-rho-one.vercel.app/Adan/loginclg',
         {
           email: email,
           password: password,
@@ -66,7 +66,7 @@ export default function Loginclg() {
 
   return (
     <>
-<div className="container my-4">
+<div className="container my-6">
       <div className="row justify-content-center">
         <div className="col-md-6">
           

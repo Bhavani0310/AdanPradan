@@ -208,14 +208,7 @@ label {
 .day-name {
   font-weight: bold;
 }
-@media screen and (max-width: 568px) {
-  .week-schedule {
-    flex-direction: column; /* Display the date buttons in a vertical column */
-  }
-  .day {
-    margin: 5px; /* Add spacing between date buttons */
-  }
-}
+
 
 .day-button {
   background-color: transparent;

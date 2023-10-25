@@ -1,10 +1,7 @@
 import React from 'react' 
-import Login from './Login'
-import WorkshopForm from './WorkshopForm';
-import WorkshopAccordion from './WorkshopAccordion';
 import TodayBooking from './TodayBooking';
 import Upcoming from './Upcoming';
-function Workshop() {
+function BookingClg() {
   return (
     <div className='container space '>
       <div className="d-flex justify-content-center ">
@@ -23,12 +20,9 @@ function Workshop() {
   
   <div className="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="1">
   <div className="custom-scrollbar">
-              <WorkshopForm />
-              <WorkshopForm />
-              <WorkshopForm />
-              <WorkshopForm />
-              <WorkshopForm />
-              <WorkshopForm />
+             <div className="container space">
+              <h1>We are Working on it.....</h1>
+             </div>
             </div>
     </div>
   
@@ -51,4 +45,4 @@ function Workshop() {
   )
 }
 
-export default Workshop
+export default BookingClg;

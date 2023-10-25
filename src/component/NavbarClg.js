@@ -138,26 +138,13 @@ export default function NavbarClg() {
             >
               Cancel
             </Button>
-            <div>
-              {loading ? (
-                <button className="btn btn-primary" type="button" disabled>
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  <span role="status">Loading...</span>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={() => setShowLogoutModal(true)}
-                >
-                  Logout
-                </button>
-              )}
-            </div>
+            <Button
+              variant="danger"
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </Button>
+            
           </Modal.Footer>
         </Modal>
       )}

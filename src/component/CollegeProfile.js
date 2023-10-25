@@ -13,7 +13,7 @@ const CollegeProfile = () => {
 
   const addWorkshop = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/Adan/addworkshops", workshop);
+      const response = await axios.post("https://backend-rho-one.vercel.app/Adan/addworkshops", workshop);
       setWorkshops([...workshops, response.data]);
       setWorkshop({ title: '', date: '', time: '' });
     } catch (error) {
@@ -23,7 +23,7 @@ const CollegeProfile = () => {
 
   const removeWorkshop = async (id) => {
     try {
-      await axios.delete("http:localhost:4000/Adan/workshops/${workshops[id]._id}");
+      await axios.delete("https://backend-rho-one.vercel.app/workshops/${workshops[id]._id}");
       const updatedWorkshops = [...workshops];
       updatedWorkshops.splice(id, 1);
       setWorkshops(updatedWorkshops);
@@ -36,7 +36,7 @@ const CollegeProfile = () => {
     // Fetch existing workshops from the server on component mount.
     async function fetchWorkshops() {
       try {
-        const response = await axios.get('http://localhost:4000/Adan/getworkshops');
+        const response = await axios.get('https://backend-rho-one.vercel.app/Adan/getworkshops');
         // Sort workshops by date in ascending order
         response.data.sort((a, b) => (a.date < b.date ? -1 : 1));
         setWorkshops(response.data);

@@ -61,7 +61,7 @@ function convertDateFormat(inputDate) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/Adan/workshopsdetails/${mongoose.Types.ObjectId.createFromHexString(
+          `https://backend-rho-one.vercel.app/Adan/workshopsdetails/${mongoose.Types.ObjectId.createFromHexString(
             localStorage.getItem('Id')
           )}`
         );

@@ -79,9 +79,9 @@ export default function NavbarUser() {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#linkus">
-                  <h3 className="bar">Dashboard</h3>
-                </a>
+              <Link to="/dashboard" className="nav-link" href="#linkfq">
+                  <h3 className="bar">Dashboard </h3>
+                </Link>
               </li>
 
               <li className="nav-item">

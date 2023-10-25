@@ -24,7 +24,7 @@ const StudentRegistration = () => {
     e.preventDefault(); 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:4000/Adan/register', formData); 
+      const response = await axios.post('https://backend-rho-one.vercel.app/Adan/register', formData); 
 
 //     console.log('Registration Response:', response.data);
     // console.log(formData.email);

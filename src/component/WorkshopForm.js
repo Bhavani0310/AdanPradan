@@ -52,7 +52,7 @@ const WorkshopForm = () => {
    console.log(formData.workshops);
     try {
       const response = await axios.post(
-        "http://localhost:4000/Adan/addworkshops",
+        "https://backend-rho-one.vercel.app/Adan/addworkshops",
         {
           workshops: formData.workshops.filter(
             (workshop) => workshop.workshopTitle !== ""

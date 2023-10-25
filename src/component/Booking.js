@@ -43,7 +43,7 @@ function BookingPage() {
     const user = mongoose.Types.ObjectId.createFromHexString(localStorage.getItem("Id"));
 
     axios
-      .post('http://localhost:4000/Adan/booking', {
+      .post('https://backend-rho-one.vercel.app/Adan/booking', {
         collegeName: BookingClg,
         workshopTitle,
         Date,

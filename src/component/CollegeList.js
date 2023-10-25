@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Style_home.css";
 import { Link } from "react-router-dom";
 import Popup from './Popup';
+import { logDOM } from "@testing-library/react";
 
 function CollegeList() {
   const [colleges, setColleges] = useState([]);
@@ -45,17 +46,18 @@ function CollegeList() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/Adan/workshops"
+          "https://backend-rho-one.vercel.app/Adan/workshops"
         );
         const currentDateIST = new Date().toLocaleString("en-US", {
           timeZone: "Asia/Kolkata",
         });
+        // console.log(response.data);
         // Filter and select only future workshops
         const futureWorkshops = response.data.filter((workshop) => {
           const workshopDate = new Date(workshop.workshopDate);
           return workshopDate >= new Date(currentDateIST);
         });
-        console.log(futureWorkshops);
+       // console.log(futureWorkshops);
         const groupedWorkshops = groupWorkshopsByCollege(futureWorkshops);
         const groupedByDate = groupWorkshopsByCollegeDate(futureWorkshops);
         setColleges(groupedWorkshops);
@@ -144,7 +146,7 @@ function CollegeList() {
   };
   function getButtonClass(availableSeats,totalSeats) {
     const percentageAvailable = (availableSeats / totalSeats) * 100;
-  console.log(percentageAvailable);
+  //console.log(percentageAvailable);
     if (percentageAvailable > 60) {
       return 'btn-primary'; // Green
     } else if (percentageAvailable > 0 && percentageAvailable<60) {

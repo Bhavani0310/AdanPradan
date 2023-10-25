@@ -10,7 +10,7 @@ export default function UserStudent() {
 
   useEffect(() => {
     // Define the API endpoint URL
-    const apiUrl = "http://localhost:4000/Adan/workshops"; // Replace with your actual API endpoint
+    const apiUrl = "https://backend-rho-one.vercel.app/Adan/workshops"; // Replace with your actual API endpoint
 
     // Fetch data from the API
     fetch(apiUrl)

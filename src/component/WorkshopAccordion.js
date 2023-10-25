@@ -8,7 +8,7 @@ function WorkshopAccordion() {
 
   useEffect(() => {
     // Fetch the data from your API endpoint
-    fetch(`http://localhost:4000/Adan/workshopsforclg/${mongoose.Types.ObjectId.createFromHexString(
+    fetch(`https://backend-rho-one.vercel.app/Adan/workshopsforclg/${mongoose.Types.ObjectId.createFromHexString(
         localStorage.getItem("Id")
       )}`) // Replace with the actual API endpoint
       .then(response => response.json())

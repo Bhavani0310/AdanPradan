@@ -22,14 +22,14 @@ const CollegeRegistration = () => {
     // console.log(formData);
     try {
       const response = await axios.post(
-        "http://localhost:4000/Adan/registerclg",
+        "https://backend-rho-one.vercel.app/Adan/registerclg",
         {
           formData
         }
       );
 
       if (response.status === 200) {
-        navigate(`/Loginclg?email=${formData.email}&password=${formData.password}`);
+        navigate(`/Login?emailclg=${formData.email}&passwordclg=${formData.password}`);
       }
       
     } catch (error) {
