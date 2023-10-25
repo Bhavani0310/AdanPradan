@@ -28,7 +28,7 @@ const StudentRegistration = () => {
 
 //     console.log('Registration Response:', response.data);
     // console.log(formData.email);
-      navigate(`/student?email=${formData.email}&password=${formData.password}`); 
+      navigate(`/login?email=${formData.email}&password=${formData.password}`); 
     } catch (error) {
       if(error.response && error.response.status == 400){
         setError(error.response.data.message);
