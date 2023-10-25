@@ -27,12 +27,14 @@ body {
 
 
 .navbar-toggler[aria-expanded="true"] {
-  background-color: red;
+  background-color: rgb(21, 21, 21);
 }
 .contact{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+
 
 
 .navbar ul li {
@@ -53,6 +55,22 @@ body {
   
   text-decoration: none;
 }
+.toggle-button {
+  display: block;
+  margin: 20px auto;
+  background-color: #007bff; /* Background color for the toggle button */
+  color: #fff; /* Text color for the toggle button */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Rounded corners for the button */
+  padding: 10px 20px; /* Padding inside the button */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+.toggle-button:hover {
+  background-color: #0056b3; /* Background color on hover */
+}
+
 
 /*end of navigation*/
 .h1-primary {
@@ -78,29 +96,60 @@ hr {
   transform: translateY(-5px);
 }
 
-.accordion {
-  cursor: pointer;
-  width: auto;
-  border: none;
-  text-align: left;
-  outline: none;
-  align-items: center;
-  transition: 0.4s;
-  font-size: 30px;
-  background-color: #f2f6fc;
-}
-
 .h {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 2.8rem;
 }
 
-.accordion:hover#labs {
-  transform: scale(1.01);
-  color: rgb(162, 255, 0);
-  text-transform: uppercase;
-}
 
 .accordion:hover#faq {
   color: rgb(162, 255, 0);
 }
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+  max-width: 400px;
+}
+
+.popup-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.popup-content {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.popup-button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background: #0056b3;
+}
+

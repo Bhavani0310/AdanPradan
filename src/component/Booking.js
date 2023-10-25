@@ -1,53 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Booking.css';
 import axios from 'axios';
-import { useAuth } from './Authcontext';
 import mongoose from 'mongoose';
 import { useLocation } from 'react-router-dom';
 
 function BookingPage() {
-  const [colleges, setColleges] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
-  const [bookingError, setBookingError] = useState('');
-  const { user } = useAuth();
-
+  const [selectedDate, setSelectedDate] = useState(''); // Use this state to manage the selected date
+  const [Error, setError] = useState('');
   const location = useLocation(); // Use useLocation to access query parameters
   const searchParams = new URLSearchParams(location.search);
   const collegeName = searchParams.get('collegeName');
   const workshopTitle = searchParams.get('workshopTitle');
+    const setDate = searchParams.get('workshopDate');
+  console.log(setDate);
+  const [loading, setLoading] = useState(false);
+  // Function to convert a date to IST
+  const convertToIST = (dateString) => {
+    const date = new Date(dateString);
+    // Convert the date to IST by adding 5 hours and 30 minutes (19800000 milliseconds)
+    date.setTime(date.getTime() + 19800000);
+    return date.toISOString().split('T')[0]; // Convert the date to a string in "yyyy-MM-dd" format
+  };
 
+  useEffect(()=>{
+   
+    setSelectedDate(setDate);
+  
+})
   const handleDateChange = (event) => {
-    const selectedDate = new Date(event.target.value);
-    setSelectedDate(selectedDate);
-
-    // Calculate the date that is one month in the future
-    const oneMonthAheadDate = new Date();
-    oneMonthAheadDate.setMonth(oneMonthAheadDate.getMonth() + 1);
-
-    // Compare the selected date with one month ahead
-    if (selectedDate > oneMonthAheadDate) {
-      setBookingError('Please select a date that is at least one month in the future.');
-    } else if (selectedDate < new Date()) {
-      setBookingError('Please select a future date, not a past date.');
-    } else {
-      setBookingError('');
-    }
+    // If you want to allow manual date selection, you can use event.target.value
+    const newDate = event.target.value;
+    const ISTDate = convertToIST(newDate);
+    setSelectedDate(ISTDate);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (bookingError) {
-      // If there's a booking error, do not proceed with the submission
-      return;
-    }
-
+    setLoading(true);
     const BookingClg = event.target.elements.CollegeName.value;
-    const Date = selectedDate.toISOString().split('T')[0];
+    const Date = searchParams.get('workshopDate');
     const slotTime = event.target.elements.Time.value;
     const user = mongoose.Types.ObjectId.createFromHexString(localStorage.getItem("Id"));
 
     axios
-      .post('https://backend-rho-one.vercel.app/Adan/booking', {
+      .post('http://localhost:4000/Adan/booking', {
         collegeName: BookingClg,
         workshopTitle,
         Date,
@@ -59,9 +55,18 @@ function BookingPage() {
         alert('Form data saved successfully');
       })
       .catch((error) => {
-        console.error(error);
-        alert('Error saving form data');
-      });
+        if (error.response && error.response.status == 400) {
+          setError(error.response.data.message);
+        } else if (error.response && error.response.status == 500) {
+          setError(error.response.data.message);
+        } else {
+          console.error("Login Error:", error);
+          setError(error.message);
+        }
+      })
+      .finally(()=>{
+        setLoading(false);
+      })
   };
 
   return (
@@ -85,8 +90,7 @@ function BookingPage() {
           </div>
           <div className="form-row">
             <label htmlFor="Date">Date: </label>
-            <input type="date" name="Date" id="Date" required onChange={handleDateChange} />
-            {bookingError && <p className="error" style={{"color":"red"}}>{bookingError}</p>}
+            <input type="date" name="Date" id="Date" required onChange={handleDateChange} value={selectedDate} readOnly/>
           </div>
           <div className="form-row">
             <label htmlFor="slot-timings">Slot timings:</label>
@@ -96,9 +100,19 @@ function BookingPage() {
             </select>
           </div>
           <div className="form-row">
-            <input type="submit" value="Submit Now" />
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? (
+            <div>
+              <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span role="status">Booking...</span>
+            </div>
+          ) : (
+            'Book Now'
+          )}
+        </button>
           </div>
         </form>
+        {Error && <div className="alert alert-danger">{Error}</div>}
       </div>
     </div>
   );

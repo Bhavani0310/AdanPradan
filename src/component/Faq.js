@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import { Link } from "react-router-dom";
 export default function Faq() {
+
+  const [loading, setloading] = useState(true);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setloading(true);
+        // Perform your data fetching or asynchronous operations here
+        // For demonstration, I'll simulate loading for 2 seconds
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setloading(false);
+      } catch (error) {
+        setError(true);
+        setloading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Link to="/faq"></Link>

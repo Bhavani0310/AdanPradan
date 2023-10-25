@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     setAuthenticated(status);
   };
   
-  //console.log(authenticated);
+  console.log(authenticated);
 
   return (
     <AuthContext.Provider

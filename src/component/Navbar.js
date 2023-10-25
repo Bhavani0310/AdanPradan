@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-md  fixed-top">
-        <div className="container-fluid my-1">
+      <nav className="navbar navbar-expand-lg  fixed-top">
+        <div className="container-fluid my-0.5">
           <Link className="navbar-brand" to="/" id="font">
             <h2>ADAN PRADAN </h2>
           </Link>

@@ -10,20 +10,30 @@ export default function UserStudent() {
 
   useEffect(() => {
     // Define the API endpoint URL
-    const apiUrl = "https://backend-rho-one.vercel.app/Adan/workshops"; // Replace with your actual API endpoint
+    const apiUrl = "http://localhost:4000/Adan/workshops"; // Replace with your actual API endpoint
 
     // Fetch data from the API
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        const shuffledData = shuffleArray(data);
+        // Get the current date in IST
+        const currentDateIST = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+        console.log(currentDateIST);
+        // Filter and select only future workshops
+        const futureWorkshops = data.filter((workshop) => {
+          const workshopDate = new Date(workshop.workshopDate);
+          return workshopDate >= new Date(currentDateIST);
+        });
+        console.log(futureWorkshops);
+        // Shuffle the future workshops
+        const shuffledData = shuffleArray(futureWorkshops);
 
         // Select unique titles and ensure at least three cards
         const uniqueTitles = new Set();
         const selectedWorkshops = [];
         for (const workshop of shuffledData) {
-          if (!uniqueTitles.has(workshop.title)) {
-            uniqueTitles.add(workshop.title);
+          if (!uniqueTitles.has(workshop.workshopTitle)) {
+            uniqueTitles.add(workshop.workshopTitle);
             selectedWorkshops.push(workshop);
 
             if (selectedWorkshops.length >= 3) {
@@ -31,7 +41,7 @@ export default function UserStudent() {
             }
           }
         }
-
+         
         // If there are fewer than three unique titles, repeat the titles to reach three cards
         while (selectedWorkshops.length < 3 && shuffledData.length > 0) {
           const randomIndex = Math.floor(Math.random() * shuffledData.length);
@@ -40,6 +50,7 @@ export default function UserStudent() {
         }
 
         setWorkshops(selectedWorkshops);
+        
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -68,14 +79,14 @@ export default function UserStudent() {
                   <h1>{workshop.workshopTitle}</h1>
                 </center>
                 <div className="card-body">
-                  <h4 className="card-title">CollegeName: {workshop.collegeName}</h4>
-                  <p className="card-text">{workshop.description}</p>
+                  <h4 className="card-title"><b>CollegeName:</b> {workshop.collegeName}</h4>
+                  <p className="card-text">{workshop.workshopDescription}</p>
                   <Link
                           to={`/booking?collegeName=${encodeURIComponent(
                             workshop.collegeName
                           )}&workshopTitle=${encodeURIComponent(
                             workshop.workshopTitle
-                          )}`}
+                          )}&workshopDate=${encodeURIComponent(workshop.workshopDate.split('T')[0])}`}
                         >
                       <button className="btn btn-primary">Book now</button>
                       </Link>

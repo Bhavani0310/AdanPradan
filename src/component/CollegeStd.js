@@ -6,10 +6,10 @@ function CollegeStd() {
   const [data, setData] = useState([]);
   const [workshops, setWorkshops] = useState([]);
   useEffect(() => {
-    axios.get("https://backend-rho-one.vercel.app/Adan/colleges/list").then((response) => {
+    axios.get("http://localhost:4000/Adan/workshops").then((response) => {
       setData(response.data.data);
       setWorkshops(response.data.data.workshop);
-      console.log(response.data.data);
+      console.log(JSON.stringify(response.data.data));
     });
   }, []);
   const workshopsByCollege = {};

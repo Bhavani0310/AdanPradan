@@ -22,6 +22,7 @@ body {
   margin-bottom: 90px;
   margin-top: 90px;
 }
+/* Add this to your stylesheet (e.g., Style_home.css) */
 .workshop-item {
   display: flex; /* Use flexbox to align items horizontally */
   justify-content: space-between; /* Space between workshop title and button */
@@ -31,7 +32,7 @@ body {
 
 /* Style for the "Book now" button */
 .workshop-item button {
-  background-color: #007bff; /* Blue background color */
+  
   color: #fff; /* White text color */
   border: none; /* Remove button border */
   padding: 5px 10px; /* Add padding to the button */
@@ -43,6 +44,7 @@ body {
   margin: 0; /* Remove default margin for workshop title */
   flex-grow: 1; /* Allow workshop title to grow and take available space */
 }
+
 
 #gallery {
   width: 1000px;
@@ -93,7 +95,7 @@ a{
 }
 
 #footer {
-  justify-content: end;
+  justify-content: flex-end;
   display: flex;
 }
 
@@ -115,20 +117,16 @@ margin-bottom: 1.3cm;
   width: 520px;
   background-color: rgb(226, 223, 218);
 }
-
-
 .register {
   width: 200px;
  
 }
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
  text-align: center;
 }
-
 .box {
   width: 50%;
   margin: auto;
@@ -137,7 +135,6 @@ margin-bottom: 1.3cm;
   display: flex;
   flex-direction: row;
 }
-
 .division {
   display: flex;
   flex-direction: row;
@@ -145,7 +142,6 @@ margin-bottom: 1.3cm;
 .part1{
   height: 610px;
   width: 699px;
-  
 }
 .part2{
   flex: 1;
@@ -157,7 +153,7 @@ label {
 }
 
 /* Desktop*/
-@media only screen and (max-width: 620px) {
+@media only screen and (max-width: 720px) {
   .hide {
     display: block;
   }
@@ -175,7 +171,6 @@ label {
   }
   .loginform{
     width: 300px;
-    
   }
   .space{
     margin-top: 1.8cm;
@@ -188,3 +183,55 @@ label {
     margin-left: 0px;
   }
 }
+.week-schedule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.day {
+  flex: 1;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #fcfcfc;
+}
+
+.day-name {
+  font-weight: bold;
+}
+@media screen and (max-width: 568px) {
+  .week-schedule {
+    flex-direction: column; /* Display the date buttons in a vertical column */
+  }
+  .day {
+    margin: 5px; /* Add spacing between date buttons */
+  }
+}
+
+.day-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.day-button:hover {
+  background-color: #f0f0f0; /* Change to your desired hover color */
+}
+
+.day.selected {
+  background-color: #007bff; /* Change to your preferred highlight color */
+  color: white;
+}
+

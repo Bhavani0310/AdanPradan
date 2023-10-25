@@ -18,8 +18,8 @@ export default function NavbarUser() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md  fixed-top">
-        <div className="container-fluid my-1">
+      <nav className="navbar navbar-expand-lg  fixed-top">
+        <div className="container-fluid my-0.5">
           <a
             className="navbar-brand"
             id="font"
@@ -85,6 +85,7 @@ export default function NavbarUser() {
               </li>
 
               <li className="nav-item">
+                {" "}
                 <Link to="/">
                   <button
                     type="button"
@@ -96,7 +97,7 @@ export default function NavbarUser() {
                       setShowLogoutModal(true);
                     }}
                   >
-                    {" "}
+                    
                     Log Out{" "}
                   </button>
                 </Link>

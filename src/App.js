@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Routes, Outlet  } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import { useAuth } from './component/Authcontext';
 import Home from './component/Home';
@@ -15,6 +15,14 @@ import NavbarClg from './component/NavbarClg';
 import CollegeStd from './component/CollegeStd';
 import BookingPage from './component/Booking';
 import CollegeList from './component/CollegeList';
+import Loginclg from './component/Loginclg';
+import CollegeProfile from './component/CollegeProfile';
+import WorkshopForm from './component/WorkshopForm';
+import Workshop from './component/Workshop';
+import Loginslider from './component/Loginslider';
+import RegistrationTabs from './component/RegistrationTabs';
+import LoginTabs from './component/LoginTabs';
+import Upcoming from './component/Upcoming';
 
 function App() {
   const { authenticated } = useAuth(); // Access the authenticated status from the context
@@ -22,12 +30,10 @@ function App() {
   return (
     <>
       <Router>
-       
         <Routes>
           <Route path="/" element={<><Navbar /><Home /></> } />
-          <Route path="LoginClg" element={<> <Navbar /><Login /></>} />
-          <Route path="Register" element={<><Navbar /><Register /></>} />
-          <Route path="RegisterClg" element={<><Navbar /><CollegeRegistration/></>} />
+          <Route path="Login" element={<> <Navbar /><LoginTabs /></>} />
+          <Route path="Register" element={<><Navbar /><RegistrationTabs /></>} />
           <Route path="faq" element={<><Navbar/><FAQ /></>} />
           <Route path="contact" element={<ContactForm />} />
           
@@ -42,9 +48,19 @@ function App() {
             // Redirect to the home page if not authenticated
             <Route path="*" element={<> <Navbar /><Login /></>} />
           )}
+           {authenticated ? (
+            <>
+                <Route path="clg" element={<><NavbarClg /><CollegeUser/></>} />
+                <Route path="workshops" element={<><NavbarClg /><Workshop/></>} />
+             </>
+          ) : (
+            // Redirect to the home page if not authenticated
+            <Route path="*" element={<> <Navbar /><Loginclg /></>} />
+          )}
           <Route path="stdfaq" element={<><NavbarUser /><FAQ /></>} />
-          <Route path="colleges" element={<><NavbarUser /><CollegeStd /></>} />
-         
+          <Route path="upcoming" element={<><NavbarClg /><Upcoming /></>} />
+
+          <Route path="sample" element={<><NavbarUser /><WorkshopForm /></>} />
         </Routes>
       </Router>
     </>
