@@ -9,6 +9,7 @@ const Upcoming = () => {
   const [workshopsData, setWorkshopsData] = useState([]);
   const [filteredColleges, setFilteredColleges] = useState([]);
   const [showAllStudents, setShowAllStudents] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const today = new Date();
   const istOptions = { timeZone: "Asia/Kolkata" };
@@ -92,7 +93,14 @@ function convertDateFormat(inputDate) {
         setFilteredColleges(filteredData);
         setLoading(false);
       } catch (error) {
-        console.error('Error in fetching upcoming workshops data', error);
+        if (error.response && error.response.status == 404) {
+          setError(error.response.data.message);
+        } else if (error.response && error.response.status == 500) {
+          setError(error.response.data.message);
+        } else {
+          console.error("Login Error:", error);
+          setError(error.message);
+        }
       }
     };
 
@@ -152,12 +160,26 @@ function convertDateFormat(inputDate) {
         {renderDateButtons()}
       </div>
       {loading ? (
+        <div>
         <div className="d-flex justify-content-center space">
           <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
+            
           </div>
+          
+          
+        </div>
+        <div className='center'>
+          {error && (
+                
+                 <h5>{error}</h5> 
+                
+              )}
+        </div>
         </div>
       ) : (
+        <div>
+        
         <div
           className="row row-cols-1 row-cols-md-3 g-4"
           style={{
@@ -215,7 +237,7 @@ function convertDateFormat(inputDate) {
               </div>
             ))
           )}
-        </div>
+        </div></div>
       )}
     </div>
   );

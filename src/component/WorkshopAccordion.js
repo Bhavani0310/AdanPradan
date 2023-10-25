@@ -5,17 +5,27 @@ import './Style_home.css';
 function WorkshopAccordion() {
   const [workshops, setWorkshops] = useState([]);
   const [showAllWorkshops, setShowAllWorkshops] = useState(false);
-
+  const [loading,setLoading]=useState(false);
+  const [error,setError]=useState(" ")
   useEffect(() => {
+    setLoading(true);
     // Fetch the data from your API endpoint
     fetch(`https://backend-rho-one.vercel.app/Adan/workshopsforclg/${mongoose.Types.ObjectId.createFromHexString(
         localStorage.getItem("Id")
       )}`) // Replace with the actual API endpoint
       .then(response => response.json())
       .then(data => setWorkshops(data))
-      .catch(error => console.error(error));
+      .catch(error => {
+        if (error.response && error.response.status == 404) {
+        setError(error.response.data.message);
+      } else if (error.response && error.response.status == 500) {
+        setError(error.response.data.message);
+      } else {
+        console.error("Login Error:", error);
+        setError(error.message);
+      }});
 
-     
+     setLoading(false);
   }, []);
   const formatDate = (dateString) => {
     // Create a Date object from the input date string
@@ -57,6 +67,27 @@ function WorkshopAccordion() {
     return 0;
   });
   return (
+    <>
+    {loading ? (
+      <div>
+      <div className="d-flex justify-content-center space">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+          
+        </div>
+        
+        
+      </div>
+      <div className='center'>
+        {error && (
+              
+               <h5>{error}</h5> 
+              
+            )}
+      </div>
+      </div>
+    ) : (
+      <div>
     <div className="container-fulid-lg">
       <div className="row" id="feature" style={{ width: "90%" }}>
         <div className="col-md">
@@ -147,7 +178,9 @@ function WorkshopAccordion() {
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
+    )}
+    </>
   );
 }
 
