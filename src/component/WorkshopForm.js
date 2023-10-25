@@ -63,7 +63,7 @@ const WorkshopForm = () => {
 
       if (response.status === 201) {
         alert("Registration successful!");
-        navigate("/");
+        navigate("/clg");
       }
       console.log(response.message);
     } catch (error) {
