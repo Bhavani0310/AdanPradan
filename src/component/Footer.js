@@ -39,7 +39,7 @@ export default function Footer() {
                      <h4>Email: <a style={{"color":"white"}}href="" onClick={handleEmailClick}>adanpradhan@gmail.com</a></h4>
                    <h3> follow us on </h3> 
                    <a href="https://twitter.com/bhavaniprasad74" target="_blank"className="fa fa-twitter" id="us"></a> 
-                   <a href="#" className="fa fa-linkedin" id="us"></a>
+                   <a href="https://www.linkedin.com/in/bhavaniprasad-bunny" className="fa fa-linkedin" id="us"></a>
                    <a href="https://github.com/Bhavani0310" target="_blank" className="fa fa-github" id="us"></a>
 
                               </div>
