@@ -17,7 +17,7 @@ function CollegeList() {
   const today = new Date();
   const istOptions = { timeZone: "Asia/Kolkata" };
   const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1); // Get the date for tomorrow
+  tomorrow.setDate(today.getDate()+1 ); // Get the date for tomorrow
   const formattedDate = tomorrow.toLocaleDateString("en-IN", istOptions);
   const [selectedWeekDate, setSelectedWeekDate] = useState(formattedDate);
   const [showNoSeatsPopup, setShowNoSeatsPopup] = useState(false);
@@ -35,7 +35,7 @@ function CollegeList() {
 
       // Format the date as "YYYY-MM-DD" in IST
       const formattedDate = date.toLocaleDateString("en-IN", istOptions);
-
+      //console.log(formattedDate);
       weekDates.push(formattedDate);
     }
 
@@ -48,9 +48,10 @@ function CollegeList() {
         const response = await axios.get(
           "https://backend-rho-one.vercel.app/Adan/workshops"
         );
-        const currentDateIST = new Date().toLocaleString("en-US", {
+        const currentDateIST = new Date().toLocaleString("en-us", {
           timeZone: "Asia/Kolkata",
         });
+        console.log(currentDateIST);
         // console.log(response.data);
         // Filter and select only future workshops
         const futureWorkshops = response.data.filter((workshop) => {
@@ -188,7 +189,7 @@ function CollegeList() {
     const year = dateComponents[2];
 
     const newDate = new Date(`${year}-${month}-${day}`);
-
+    newDate.setDate(newDate.getDate()+1 );
     if (isNaN(newDate.getTime())) {
       return null; // Invalid date
     }
@@ -210,7 +211,7 @@ function CollegeList() {
   const handleDateChange = (date) => {
     const formattedSelectedDate = convertDateFormat(date);
     setSelectedWeekDate(date); // Set the selected date
-    // console.log('time',formattedSelectedDate);
+     console.log('time',formattedSelectedDate);
     // Filter the colleges based on the selected date
     const filteredColleges = {};
 
