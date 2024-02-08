@@ -1,6 +1,7 @@
 import React from 'react' 
 import TodayBooking from './TodayBooking';
 import Upcoming from './Upcoming';
+import PastBooking from './PastBooking';
 function BookingClg() {
   return (
     <div className='container space '>
@@ -21,7 +22,7 @@ function BookingClg() {
   <div className="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="1">
   <div className="custom-scrollbar">
              <div className="container space">
-              <h1>We are Working on it.....</h1>
+          <PastBooking/>
              </div>
             </div>
     </div>
