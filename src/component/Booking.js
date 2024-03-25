@@ -3,6 +3,7 @@ import './Booking.css';
 import axios from 'axios';
 import mongoose from 'mongoose';
 import { useLocation } from 'react-router-dom';
+import ContactForm from './ContactForm';
 
 function BookingPage() {
   const [selectedDate, setSelectedDate] = useState(''); // Use this state to manage the selected date
@@ -113,6 +114,8 @@ function BookingPage() {
           </div>
         </form>
         {Error && <div className="alert alert-danger">{Error}</div>}
+
+        <ContactForm/>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const ContactForm = () => {
     }
     try {
       // Example: Call an API to submit the form data
-      await axios.post('http://localhost:4000/Adan/send-email', {
+      await axios.post('https://backend-rho-one.vercel.app/Adan/send-email', {
         name,
         email,
         message

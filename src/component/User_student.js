@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./StyleUser.css";
 import Footer from "./Footer";
 import Faq from "./Faq";
+import ContactForm from "./ContactForm";
 
 
 export default function UserStudent() {
@@ -143,7 +144,7 @@ export default function UserStudent() {
               </div>
                   
       </div>
-     
+     <ContactForm/>
       <Footer/>
     </div>
   );

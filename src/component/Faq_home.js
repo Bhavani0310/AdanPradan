@@ -23,16 +23,18 @@ const Faq = () => {
   };
 
   const [faqs, setFaqs] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/Adan/faqs'); 
+        const response = await axios.get('https://backend-rho-one.vercel.app/Adan/faqs'); 
         // Select 4 random FAQs
         const randomFaqs = shuffleArray(response.data);
         setFaqs(randomFaqs);
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching FAQs:', error);
+        setLoading(false);
       }
     };
 
@@ -63,6 +65,16 @@ const Faq = () => {
 
   return (
     <div className="container-lg-1 space">
+
+{loading ? (
+            // <div>
+            //   <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            //   <span role="status"></span>
+            // </div>
+            <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+          ) : (
       <div className='grid-container'>
         <div className='img-column-1'>
           <div className={`img-container ${delayAnimation ? 'animate' : ''}`} >
@@ -88,6 +100,8 @@ const Faq = () => {
 </div>
         </div>
       </div> 
+      
+      )}
       <ContactForm/>
     </div>
    

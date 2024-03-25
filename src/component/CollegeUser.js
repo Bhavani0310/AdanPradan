@@ -5,6 +5,7 @@ import "./Style_home.css";
 
 import WorkshopAccordion from "./WorkshopAccordion";
 import TodayBooking from "./TodayBooking";
+import ContactForm from "./ContactForm";
 const CollegeUser = () => {
  
   return (
@@ -21,6 +22,7 @@ const CollegeUser = () => {
        
         <WorkshopAccordion />
         <hr />
+        <ContactForm/>
         <Footer />
       </div>
     </>

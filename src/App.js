@@ -5,7 +5,6 @@ import { useAuth } from './component/Authcontext';
 import Home from './component/Home';
 import Login from './component/Login';
 import FAQ from './component/Faq';
-import ContactForm from './component/ContactForm';
 import Contactform from './component/Contact';
 import CollegeUser from './component/CollegeUser';
 import User_student from './component/User_student';
