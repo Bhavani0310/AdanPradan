@@ -5,7 +5,8 @@ import { useAuth } from './component/Authcontext';
 import Home from './component/Home';
 import Login from './component/Login';
 import FAQ from './component/Faq';
-import ContactForm from './component/Contact';
+import ContactForm from './component/ContactForm';
+import Contactform from './component/Contact';
 import CollegeUser from './component/CollegeUser';
 import User_student from './component/User_student';
 import NavbarUser from './component/NavbarUser';
@@ -20,6 +21,8 @@ import LoginTabs from './component/LoginTabs';
 import Upcoming from './component/Upcoming';
 import BookingClg from './component/BookingClg';
 import StudentProfile from './component/StudentProfile';
+import Read from './component/Read';
+import Faq_home from './component/Faq_home';
 
 function App() {
   const { authenticated } = useAuth(); // Access the authenticated status from the context
@@ -31,8 +34,8 @@ function App() {
           <Route path="/" element={<><Navbar /><Home /></> } />
           <Route path="Login" element={<> <Navbar /><LoginTabs /></>} />
           <Route path="Register" element={<><Navbar /><RegistrationTabs /></>} />
-          <Route path="faq" element={<><Navbar/><FAQ /></>} />
-          <Route path="contact" element={<ContactForm />} />
+          <Route path="faq" element={<><Navbar/><Faq_home/></>} />
+          <Route path="contact" element={<><Navbar/><Contactform/></>} />
           
           {/* Conditionally render the "Student" route based on authentication */}
           {authenticated ? (

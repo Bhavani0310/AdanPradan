@@ -55,14 +55,7 @@ a{
   color: rgb(8, 8, 8);
   text-decoration: none;
 }
-.faq{
-  text-decoration: none;
-}
-.faq:hover{
-   color: rgb(73, 236, 226);
-   cursor:pointer;
-   text-decoration: none;
-}
+
 #feature {
   display: flex;
   margin-left: 15px;
@@ -140,7 +133,7 @@ margin-bottom: 1.3cm;
   flex-direction: row;
 }
 .part1{
-  height: 610px;
+  height:fit-content;
   width: 699px;
 }
 .part2{

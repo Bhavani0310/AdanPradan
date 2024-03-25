@@ -1,7 +1,11 @@
+
+
 import React, { useEffect, useState } from 'react';
 import './FAQ.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import ContactForm from './ContactForm';
+
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -25,7 +29,7 @@ const Faq = () => {
       try {
         const response = await axios.get('http://localhost:4000/Adan/faqs'); 
         // Select 4 random FAQs
-        const randomFaqs = shuffleArray(response.data).slice(0, 4);
+        const randomFaqs = shuffleArray(response.data);
         setFaqs(randomFaqs);
       } catch (error) {
         console.error('Error fetching FAQs:', error);
@@ -61,29 +65,32 @@ const Faq = () => {
     <div className="container-lg-1 space">
       <div className='grid-container'>
         <div className='img-column-1'>
-          <div className={`img-container1 ${delayAnimation ? 'animate' : ''}`} ></div>
+          <div className={`img-container ${delayAnimation ? 'animate' : ''}`} >
+         </div>
         </div>
         <div className='content-column-1'>
-          <div className="faq">
-            <Link to="/faq">
-              <h2 className="col-5 h faq">FAQ</h2>
-            </Link>
-            <div className="faqs">
-              {faqs.map((faq, index) => (
-                <div
-                  className={"faq " + (faq.open ? "open" : "")}
-                  key={index}
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <div className="faq-question">{faq.question}</div>
-                  <div className="faq-answer">{faq.answer}</div>
-                </div>
-              ))}
-            </div>
+        <div className="faq">
+        <Link to="/faq">
+          <h2 className="col-5 h faq">FAQ</h2>
+        </Link>
+  <div className="faqs">
+        {faqs.map((faq, index) => (
+          <div
+            className={"faq " + (faq.open ? "open" : "")}
+            key={index}
+            onClick={() => toggleFAQ(index)}
+          >
+            <div className="faq-question">{faq.question}</div>
+            <div className="faq-answer">{faq.answer}</div>
           </div>
-        </div>
+        ))}
       </div>
+</div>
+        </div>
+      </div> 
+      <ContactForm/>
     </div>
+   
   );
 };
 

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import { Link } from "react-router-dom";
 import "./StyleUser.css";
 import Footer from "./Footer";
+import Faq from "./Faq";
 
 
 export default function UserStudent() {
@@ -140,8 +141,9 @@ export default function UserStudent() {
                   </div>
                 </div>
               </div>
-
+                  
       </div>
+     
       <Footer/>
     </div>
   );

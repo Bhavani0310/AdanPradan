@@ -44,14 +44,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#linkfq">
-                  <h3 className="bar">FAQ'S</h3>
-                </a>
+              <Link to="/faq" className="nav-link" >
+                  <h3 className="bar">FAQ</h3>
+                </Link>
               </li>
              
              
               <li className="nav-item">
-                <Link to="/contact" className="nav-link" href="#linkus">
+                <Link to="/contact" className="nav-link">
                   <h3 className="bar">Contact-Us</h3>
                 </Link>
                  
