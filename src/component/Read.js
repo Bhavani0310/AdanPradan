@@ -1,64 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import './FAQ.css'; // Assuming you saved the styles in a file named FAQ.css
+import React from 'react';
+import styled from 'styled-components';
 
-export default function Read() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+const PageContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 50px 20px;
+  min-height: 50vh;
+  
+`;
 
-  // Function to toggle hover state
-  const handleHover = (hovered) => {
-    setIsHovered(hovered);
-    if (hovered) {
-      // Delay resetting the hover state after 5 seconds
-      setTimeout(() => {
-        setIsHovered(false);
-      }, 20000); // 20000 milliseconds = 20 seconds
-    }
-  };
+const Column = styled.div`
+  flex: 1 1 300px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 
-  useEffect(() => {
-    // Check if the screen width is below a certain threshold to determine if it's a mobile device
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust the threshold as needed
-    };
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
 
-    handleResize(); // Check on initial render
-    window.addEventListener('resize', handleResize); // Add event listener for resize
+const Title = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
 
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+const Paragraph = styled.p`
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+`;
 
+const Button = styled.button`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const Read = () => {
   return (
-    <div className='container-lg-2 space '>
-      
-      <h1 className="display-3">Quick read</h1>
-      <hr/>
-      <div className='grid-container'>
-        <div className={`content-column ${isMobile && isHovered ? 'typewriter monospace big-caret lorem' : ''}`}
-             onMouseEnter={() => !isMobile && handleHover(true)} 
-             onTouchStart={() => isMobile && handleHover(true)}> 
-          <h6 style={{ fontSize: '20px', top: 0, left: 0, background: 'transparent' }}>
-            <strong>Welcome to AdanPradhan</strong>, your one-stop destination
-            for accessible and enriching workshops. Our mission is to empower
-            students with affordable educational opportunities that propel them
-            toward success in their academic and personal endeavors.{' '}
-            <strong>At AdanPradhan</strong>, we prioritize affordability,
-            employing location-based filtering to reduce travel costs and
-            offering a diverse range of workshops spanning technology, arts,
-            business, sciences, and more. Additionally, educational institutions
-            can partner with us to showcase their workshops, connecting with
-            eager learners and contributing to their educational growth.
-          </h6>
-        </div>
-
-        <div className='img-column'>
-          <div className='img-container2'></div>
-        </div>
-      </div>
-    
-    </div>
+    <PageContainer>
+      <Column>
+        <Title>WorkShops</Title>
+        <Paragraph>
+          We offer a variety of workshops on various technologies and IoT (Internet of Things) related topics. 
+          Whether you're interested in learning about web development, mobile app development, data science, 
+          artificial intelligence, or IoT, we have workshops designed to enhance your skills and knowledge.
+        </Paragraph>
+        <Button>More Info</Button>
+      </Column>
+      <Column>
+        <Title>Colleges</Title>
+        <Paragraph>
+          Our website collaborates with several prestigious colleges and universities to provide quality 
+          educational resources and opportunities. These collaborations enable students to access courses, 
+          workshops, and other educational materials to supplement their learning experience and career development.
+        </Paragraph>
+        <Button>More Info</Button>
+      </Column>
+    </PageContainer>
   );
-}
+};
+
+export default Read;

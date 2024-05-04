@@ -66,7 +66,7 @@ export default function Loginclg() {
 
   return (
     <>
-<div className="container my-6">
+<div className="container my-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           
@@ -81,6 +81,7 @@ export default function Loginclg() {
             <input type="password" id="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
           <div className="form-group">
+          <div className="d-flex justify-content-center flex-column align-items-center">
           <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? (
             <div>
@@ -91,6 +92,7 @@ export default function Loginclg() {
             'Login'
           )}
         </button>
+        </div>
           </div>
           {error && <div className="alert alert-danger">{error}</div>}
         </form>

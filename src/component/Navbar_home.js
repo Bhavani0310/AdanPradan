@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Navbar = ({ scrollToSection }) => {
+const Navbar_home = ({ scrollToSection }) => {
   return (
     <>
-   <nav className="navbar navbar-expand-lg fixed-top" style={{ backgroundColor: 'black' }}>
+   <nav className="navbar navbar-expand-lg fixed-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
         <div className="container-fluid my-0.5">
           <Link className="navbar-brand" to="/" id="font">
             <h2>ADAN PRADAN </h2>
@@ -70,4 +70,4 @@ const Navbar = ({ scrollToSection }) => {
   );
 };
 
-export default Navbar;
+export default Navbar_home;

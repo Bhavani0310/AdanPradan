@@ -12,7 +12,7 @@ function LoginTabs() {
   };
 
   return (
-    <div className='space'>
+    <div className='space' >
       <div className="container space registration-tabs-container">
         <Nav
           variant="pills"

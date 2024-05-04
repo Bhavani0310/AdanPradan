@@ -74,6 +74,7 @@ const Faq = () => {
             <div className="loader-container">
             <div className="loader"></div>
           </div>
+
           ) : (
       <div className='grid-container'>
         <div className='img-column-1'>
@@ -83,7 +84,7 @@ const Faq = () => {
         <div className='content-column-1'>
         <div className="faq">
         <Link to="/faq">
-          <h2 className="col-5 h faq">FAQ</h2>
+          <h2 className="col-6 h faq">FAQ</h2>
         </Link>
   <div className="faqs">
         {faqs.map((faq, index) => (

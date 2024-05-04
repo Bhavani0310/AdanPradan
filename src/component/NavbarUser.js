@@ -9,10 +9,10 @@ export default function NavbarUser() {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
-  const handleLogout = () => {
+  const handleLogout = async() => {
+     await logout();
     navigate("/");
     setShowLogoutModal(false);
-    logout()
   };
  
 
