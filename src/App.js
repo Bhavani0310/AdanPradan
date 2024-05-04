@@ -116,7 +116,7 @@ function App() {
              </>
           ) : (
             // Redirect to the home page if not authenticated
-            <Route path="*" element={<> <Navbar /><AuthChecker/><HeroSection/></>} />
+            <Route path="*" element={<> <Navbar /><HeroSection/></>} />
           )}
            {authenticated ? (
             <>
